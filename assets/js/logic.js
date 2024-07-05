@@ -1,5 +1,20 @@
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. The mode should be saved to local storage.
+const themeSwitcher = document.querySelector('#toggle');
+const lightDark = document.querySelector('#form-container')
 
+let pageMode = 'dark';
+
+themeSwitcher.addEventListener('click', function () {
+  
+  if (pageMode === 'dark') {
+    pageMode = 'light';
+    lightDark.setAttribute('class', 'light');
+  }
+  else {
+    pageMode = 'dark';
+    lightDark.setAttribute('class', 'dark');
+  }
+})
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
 
