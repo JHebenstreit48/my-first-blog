@@ -12,22 +12,29 @@ let formSubmit = document.getElementById('form');
 
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission.
 
+const redirectPage = function (url) {
+  console.log("hello")
+  window.location.assign(url);
+};
+
 formSubmit.addEventListener('submit', function (e) {
     e.preventDefault()
 
 let blogPosts = JSON.parse(localStorage.getItem('blogs')) || []
 
-    if (userField.value.trim() === "" || titleField.value.trim() === "" || contentField.value.trim() === "") {
+    if (!userField.value.trim() || !titleField.value.trim() || !contentField.value.trim()) {
         errorMessage.textContent = "Please complete the form.";
 
     } else {
         const blogCreate = {
-            username: userField.value,
-            title: titleField.value,
-            content: contentField.value,
+            username: userField.value.trim(),
+            title: titleField.value.trim(),
+            content: contentField.value.trim(),
         }
-        blogPosts.push(blogCreate)
-        localStorage.setItem('blogs', JSON.stringify(blogPosts))
-        redirectPage()
+        // blogPosts.push(blogCreate)
+        // localStorage.setItem('blogs', JSON.stringify(blogPosts))
+        storeLocalStorage(blogCreate);
+        let redirectURL = "./blog.html"
+        // redirectPage(redirectURL)
     }
 })

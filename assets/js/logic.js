@@ -8,10 +8,12 @@ lightDark.addEventListener('click', function (e) {
   if (currentPageMode === 'dark') {
     currentPageMode = 'light'
     body.setAttribute('class', 'light');
+    document.documentElement.style.setProperty("--circle-color","#ffb100")
   }
   else {
     currentPageMode = 'dark'
     body.setAttribute('class', 'dark');
+    document.documentElement.style.setProperty("--circle-color","#8570a5")
   }
 })
 
@@ -28,10 +30,12 @@ function readLocalStorage() {
 
 // TODO: Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing blog data in local storage.
 
-function storeLocalStorage() {
-  const blogPost = JSON.parse(localStorage.getItem())
+function storeLocalStorage(data) {
+  console.log(data);
+  let blogPosts = JSON.parse(localStorage.getItem('blogs')) || []
+  blogPosts.push(data)
+  localStorage.setItem('blogs', JSON.stringify(blogPosts))
 }
-
 
 // ! Use the following function whenever you need to redirect to a different page
 
@@ -41,3 +45,4 @@ function storeLocalStorage() {
 //   redirectURL = url;
 //   location.assign(url);
 // };
+

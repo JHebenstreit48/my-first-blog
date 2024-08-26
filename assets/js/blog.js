@@ -13,12 +13,13 @@ const backSelect = document.querySelectorAll('.back');
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
 // Sounds like there will be another if else statement
 
-renderBlogList();
+// function
+
+// renderBlogList();
 
 function displayMessage() {
     message.textContent = blogFound
 
-    // if else
 }
 
 // TODO: Call the `renderBlogList` function
@@ -26,9 +27,10 @@ function displayMessage() {
 
 // TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
 
-let redirectURL = '';
+let redirectURL = './index.html';
 
 const redirectPage = function (url) {
-  redirectURL = url;
-  location.assign(url);
+  console.log("hello")
+  window.location.assign(url);
 };
+document.getElementById("back").addEventListener("click",function(){redirectPage("./index.html")})
