@@ -12,15 +12,14 @@ let formSubmit = document.getElementById('form');
 
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission.
 
-const redirectPage = function (url) {
-  console.log("hello")
-  window.location.assign(url);
-};
+// const redirectPage = function (url) {
+//   window.location.assign(url);
+// };
 
 formSubmit.addEventListener('submit', function (e) {
     e.preventDefault()
 
-let blogPosts = JSON.parse(localStorage.getItem('blogs')) || []
+let blogPosts = readLocalStorage()
 
     if (!userField.value.trim() || !titleField.value.trim() || !contentField.value.trim()) {
         errorMessage.textContent = "Please complete the form.";
@@ -34,7 +33,7 @@ let blogPosts = JSON.parse(localStorage.getItem('blogs')) || []
         // blogPosts.push(blogCreate)
         // localStorage.setItem('blogs', JSON.stringify(blogPosts))
         storeLocalStorage(blogCreate);
-        let redirectURL = "./blog.html"
-        // redirectPage(redirectURL)
+        redirectURL = "./blog.html"
+        redirectPage(redirectURL)
     }
 })
